@@ -8,4 +8,5 @@ t_game_loop::t_game_loop(t_game_components& game_components)
 }
 
 void t_game_loop::update(const t_delta_timestamp delta) {
+
 }

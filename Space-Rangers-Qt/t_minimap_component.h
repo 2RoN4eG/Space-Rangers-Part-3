@@ -3,9 +3,9 @@
 
 #include "t_common_entities.h"
 
-struct t_minimap_size {
+struct t_minimap_size_entity {
 public:
-    t_minimap_size() {
+    t_minimap_size_entity() {
     }
 
 private:
@@ -13,13 +13,13 @@ private:
     int _height {};
 };
 
-class [[maybe_unused]] minimap_component
+class [[maybe_unused]] t_minimap_component
 {
 public:
-    minimap_component();
+    t_minimap_component();
 
 private:
-    t_minimap_size _size;
+    t_minimap_size_entity _size;
 };
 
 #endif // T_MINIMAP_COMPONENT_H

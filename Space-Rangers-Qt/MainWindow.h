@@ -37,10 +37,13 @@ private slots:
 
     void on_pushButton_7_clicked();
 
+    void on_pushButton_clicked();
+
 private:
     Ui::MainWindow *ui;
 
     bool _setting_enemy_path {};
+    bool _following {};
 
     int _timer_id { -1 };
 };

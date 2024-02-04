@@ -4,7 +4,7 @@
 #include "t_common_entities.h"
 
 class t_game_components;
-class i_game_system;
+class i_system;
 
 class [[maybe_unused]] t_game_systems
 {

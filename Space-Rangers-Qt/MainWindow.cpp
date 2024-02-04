@@ -6,12 +6,17 @@
 #include <QTime>
 
 #include "t_game_components.h"
+
 #include "spaceships/t_spaceship_component.h"
-#include "spaceships/t_spaceship_moving_by_trajectory_system.h"
+#include "spaceships/t_spaceship_trajectory_moving_system.h"
+#include "spaceships/t_spaceship_following_another_system.h"
+
 #include "planets/t_planet_circle_moving_system.h"
 
 #include "linear_algebra/t_2d_container_entity.h"
 #include "linear_algebra/t_2d_vector_systems.h"
+
+#include "t_render_system.h"
 
 #include <iostream>
 
@@ -45,45 +50,13 @@ void MainWindow::paintEvent(QPaintEvent* event) {
 
     QPainter painter { this };
 
-    QPen pen(Qt::blue);
-    pen.setCapStyle(Qt::RoundCap);
-    pen.setWidth(10);
-    painter.setRenderHint(QPainter::Antialiasing, true);
-    painter.setPen(pen);
+    t_render_system render { size, painter, game_components };
 
-    for (const t_planet_game_component& planet : game_components.planets()) {
-        painter.drawPoint(planet.get_position().x(), size.height() - planet.get_position().y());
-    }
+    render.render_planets();
 
-    pen = QPen(Qt::yellow);
-    pen.setCapStyle(Qt::RoundCap);
-    pen.setWidth(8);
-    painter.setRenderHint(QPainter::Antialiasing, true);
-    painter.setPen(pen);
+    render.render_trajectory();
 
-    t_spaceship_component& spaceship = game_components.spaceship(t_spaceship_id_entity { 2 });
-    for (const t_2d_position_entity enemy_position : spaceship.trajectory()) {
-        painter.drawPoint(enemy_position.x(), size.height() - enemy_position.y());
-    }
-
-    for (const t_spaceship_component& spaceship : game_components.spaceships()) {
-        if (spaceship.is_player()) {
-            pen = QPen(Qt::green);
-            pen.setCapStyle(Qt::RoundCap);
-            pen.setWidth(8);
-            painter.setRenderHint(QPainter::Antialiasing, true);
-            painter.setPen(pen);
-        }
-        else {
-            pen = QPen(Qt::red);
-            pen.setCapStyle(Qt::RoundCap);
-            pen.setWidth(4);
-            painter.setRenderHint(QPainter::Antialiasing, true);
-            painter.setPen(pen);
-        }
-
-        painter.drawPoint(spaceship.get_position().x(), size.height() - spaceship.get_position().y());
-    }
+    render.render_spaceships();
 
     resizeEvent(nullptr);
 }
@@ -125,13 +98,19 @@ void MainWindow::timerEvent(QTimerEvent* event) {
 
     t_spaceship_component& spaceship = game_components.spaceship(t_spaceship_id_entity { 2 });
 
-    t_spaceship_moving_by_trajectory_system spaceship_moving { spaceship };
-
+    t_spaceship_trajectory_moving_system spaceship_moving { spaceship };
     spaceship_moving.update();
 
     t_planet_circle_moving_system planet_circle_moving { game_components };
-
     planet_circle_moving.update();
+
+    if (_following) {
+        t_spaceship_following_another_system spaceship_following_another { game_components,
+                                                                           t_spaceship_id_entity { 0 },
+                                                                           t_spaceship_id_entity { 2 } };
+
+        spaceship_following_another.update();
+    }
 
     repaint();
 }
@@ -189,5 +168,11 @@ void MainWindow::on_pushButton_7_clicked() {
     }
 
     _timer_id = startTimer(500);
+}
+
+
+void MainWindow::on_pushButton_clicked()
+{
+    _following = !_following;
 }
 

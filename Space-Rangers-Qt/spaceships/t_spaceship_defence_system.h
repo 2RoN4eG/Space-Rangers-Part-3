@@ -1,17 +1,17 @@
 #ifndef T_SPACESHIP_DEFENCE_SYSTEM_H
 #define T_SPACESHIP_DEFENCE_SYSTEM_H
 
-//
-// Система уклонения от ракет
-//
+#include "../interfaces/i_system.h"
+
+// Система уклонения от ракет вражеского корабля
 // Необходимо:
 // - Радар
 // - Устройство уклонения от ракет
 
-class t_ship_defence_system
+class t_spaceship_defence_system : public i_system
 {
 public:
-    t_ship_defence_system();
+    t_spaceship_defence_system();
 
     bool requirements_completed() const;
 

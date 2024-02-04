@@ -1,4 +1,4 @@
-#include "t_spaceship_moving_by_trajectory_system.h"
+#include "t_spaceship_trajectory_moving_system.h"
 
 #include "../t_game_components.h"
 
@@ -7,19 +7,20 @@
 
 #include <iostream>
 
-t_spaceship_moving_by_trajectory_system::t_spaceship_moving_by_trajectory_system(t_spaceship_component& spaceship)
-    : i_game_system { "spaceship_moving_by_trajectory" }
+#include "../t_common_entities.h"
+
+t_spaceship_trajectory_moving_system::t_spaceship_trajectory_moving_system(t_spaceship_component& spaceship)
+    : i_system { __CLASS_NAME__ }
     , _spaceship { spaceship }
 {
 }
 
-t_spaceship_moving_by_trajectory_system::t_spaceship_moving_by_trajectory_system(t_game_components& game_components, t_spaceship_id_entity& spaceship_id)
-    : i_game_system { "spaceship_moving_by_trajectory" }
-    , _spaceship { game_components.spaceship(spaceship_id) }
+t_spaceship_trajectory_moving_system::t_spaceship_trajectory_moving_system(t_game_components& game_components, const t_spaceship_id_entity spaceship_id)
+    : t_spaceship_trajectory_moving_system { game_components.spaceship(spaceship_id) }
 {
 }
 
-void t_spaceship_moving_by_trajectory_system::update([[maybe_unused]] t_delta_timestamp delta) {
+void t_spaceship_trajectory_moving_system::update([[maybe_unused]] t_delta_timestamp delta) {
     t_trajectory_entity& trajectory = _spaceship.trajectory();
 
     if (trajectory.empty()) {
@@ -32,10 +33,10 @@ void t_spaceship_moving_by_trajectory_system::update([[maybe_unused]] t_delta_ti
     t_2d_position_entity& position = _spaceship.position();
     // std::cout << "spaceship " << _spaceship._id << " position is { " << position.x() << ", " << position.y() << " }" << std::endl;
 
-    const t_2d_position_entity& destination = trajectory.front();
-    // std::cout << "spaceship " << _spaceship._id << " destination is { " << destination.x() << ", " << destination.y() << " }" << std::endl;
+    const t_2d_position_entity& target = trajectory.front();
+    // std::cout << "spaceship " << _spaceship._id << " target is { " << target.x() << ", " << target.y() << " }" << std::endl;
 
-    const t_2d_vector_entity heading = make_2d_vector(position, destination);
+    const t_2d_vector_entity heading = make_2d_vector(position, target);
     // std::cout << "spaceship " << _spaceship._id << " heading is { " << heading.x() << ", " << heading.y() << " }" << std::endl;
 
     const t_2d_vector_length distance = t_2d_vector_length_system(heading);

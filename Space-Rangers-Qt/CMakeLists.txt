@@ -13,43 +13,50 @@ find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
 set(PROJECT_SOURCES
-        main.cpp
+    t_main.cpp
         MainWindow.cpp
         MainWindow.h
         MainWindow.ui
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
-    qt_add_executable(Space-Rangers-Qt
-        MANUAL_FINALIZATION
+    qt_add_executable(Space-Rangers-Qt MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
-        t_common_entities.h t_common_entities.cpp
+
+        t_stepper.h                                             t_stepper.cpp
+        t_common_entities.h                                     t_common_entities.cpp
+
         t_game_loop.h                                           t_game_loop.cpp
         t_game_components.h                                     t_game_components.cpp
         t_game_systems.h                                        t_game_systems.cpp
+
         t_render_system.h                                       t_render_system.cpp
-        t_stepper.h                                             t_stepper.cpp
+
         t_minimap_component.h                                   t_minimap_component.cpp
 
+        linear_algebra/run_test_store_exception.h
         linear_algebra/t_2d_container_entity.h                  linear_algebra/t_2d_container_entity.cpp
         linear_algebra/t_2d_position_entity.h                   linear_algebra/t_2d_position_entity.cpp
         linear_algebra/t_2d_position_systems.h                  linear_algebra/t_2d_position_systems.cpp
         linear_algebra/t_2d_vector_entity.h                     linear_algebra/t_2d_vector_entity.cpp
         linear_algebra/t_2d_vector_systems.h                    linear_algebra/t_2d_vector_systems.cpp
         linear_algebra/t_2d_common_utilities.h                  linear_algebra/t_2d_common_utilities.cpp
-        linear_algebra/run_test_store_exception.h
 
-        spaceships/t_spaceship_defence_system.h                spaceships/t_spaceship_defence_system.cpp
-        spaceships/t_spaceship_moving_by_trajectory_system.h    spaceships/t_spaceship_moving_by_trajectory_system.cpp
+        interfaces/i_system.h                                   interfaces/i_system.cpp
+
+        spaceships/t_spaceship_defence_system.h                 spaceships/t_spaceship_defence_system.cpp
+        spaceships/t_spaceship_trajectory_moving_system.h       spaceships/t_spaceship_trajectory_moving_system.cpp
         spaceships/t_spaceship_following_another_system.h       spaceships/t_spaceship_following_another_system.cpp
         spaceships/t_spaceship_component.h                      spaceships/t_spaceship_component.cpp
         spaceships/t_spaceship_systems.h                        spaceships/t_spaceship_systems.cpp
+        spaceships/t_spaceship_landing_planet_system.h          spaceships/t_spaceship_landing_planet_system.cpp
 
-        planets/t_planet_game_component.h                       planets/t_planet_game_component.cpp
+        planets/t_planet_component.h                            planets/t_planet_component.cpp
         planets/t_planet_circle_moving_system.h                 planets/t_planet_circle_moving_system.cpp
         planets/t_planet_id_generator.h                         planets/t_planet_id_generator.cpp
 
-        interfaces/i_game_system.h                              interfaces/i_game_system.cpp
+        planetsystems/t_planetsystem_component.h                planetsystems/t_planetsystem_component.cpp
+
     )
 
 # Define target properties for Android with Qt 6 as:
@@ -58,15 +65,11 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
 # For more information, see https://doc.qt.io/qt-6/qt-add-executable.html#target-creation
 else()
     if(ANDROID)
-        add_library(Space-Rangers-Qt SHARED
-            ${PROJECT_SOURCES}
-        )
+        add_library(Space-Rangers-Qt SHARED ${PROJECT_SOURCES})
 # Define properties for Android with Qt 5 after find_package() calls as:
 #    set(ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/android")
     else()
-        add_executable(Space-Rangers-Qt
-            ${PROJECT_SOURCES}
-        )
+        add_executable(Space-Rangers-Qt ${PROJECT_SOURCES})
     endif()
 endif()
 

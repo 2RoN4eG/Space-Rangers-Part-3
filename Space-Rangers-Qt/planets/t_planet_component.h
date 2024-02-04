@@ -1,5 +1,5 @@
-#ifndef T_PLANET_GAME_COMPONENT_H
-#define T_PLANET_GAME_COMPONENT_H
+#ifndef T_PLANET_COMPONENT_H
+#define T_PLANET_COMPONENT_H
 
 #include "../t_common_entities.h"
 #include "../t_stepper.h"
@@ -13,10 +13,10 @@
 
 using t_linear_direction = float;
 
-class t_planet_game_component
+class t_planet_component
 {
 public:
-    t_planet_game_component(const t_planet_id_entity id, const t_radius_entity radius, const t_angle_entity angle);
+    t_planet_component(const t_planet_id_entity id, const t_radius_entity radius, const t_angle_entity angle);
 
     t_planet_id_entity id() const;
 
@@ -53,6 +53,6 @@ private:
     t_stepper<t_angle_entity> _degrees { 0., 90. / 4 };
 };
 
-std::vector<t_planet_game_component> make_planets(size_t count, t_planet_id_generator planet_id_generator = {}, t_planet_position_generator planet_position_generator = {});
+std::vector<t_planet_component> make_planets(size_t count, t_planet_id_generator planet_id_generator = {}, t_planet_position_generator planet_position_generator = {});
 
-#endif // T_PLANET_GAME_COMPONENT_H
+#endif // T_PLANET_COMPONENT_H
