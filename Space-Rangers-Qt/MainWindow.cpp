@@ -7,16 +7,16 @@
 
 #include "t_game_components.h"
 
-#include "spaceships/t_spaceship_component.h"
+#include "spaceships/t_component_spaceship.h"
 #include "spaceships/t_spaceship_trajectory_moving_system.h"
 #include "spaceships/t_spaceship_following_another_system.h"
 
-#include "planets/t_planet_circle_moving_system.h"
+#include "planets/t_system_planet_circle_moving.h"
 
 #include "linear_algebra/t_2d_container_entity.h"
 #include "linear_algebra/t_2d_vector_systems.h"
 
-#include "t_render_system.h"
+#include "t_game_render_system.h"
 
 #include <iostream>
 
@@ -49,8 +49,8 @@ void MainWindow::paintEvent(QPaintEvent* event) {
     const QSize& size = ui->widget->size();
 
     QPainter painter { this };
-
-    t_render_system render { size, painter, game_components };
+    
+    t_game_render_system render { size, painter, game_components };
 
     render.render_planets();
 
@@ -84,7 +84,7 @@ void MainWindow::mousePressEvent(QMouseEvent* event) {
 
     const QPoint point = event->pos();
 
-    t_spaceship_component& spaceship = game_components.spaceship(t_spaceship_id_entity { 2 });
+    t_component_spaceship& spaceship = game_components.spaceship(t_spaceship_id_entity { 2 });
     spaceship.trajectory().emplace_back(point.x(), ui->widget->size().height() - point.y());
 
     repaint();
@@ -96,12 +96,12 @@ void MainWindow::timerEvent(QTimerEvent* event) {
 
         qDebug() << qCurrentTime << "qt timerEvent(QTimerEvent* event)";
 
-    t_spaceship_component& spaceship = game_components.spaceship(t_spaceship_id_entity { 2 });
+    t_component_spaceship& spaceship = game_components.spaceship(t_spaceship_id_entity { 2 });
 
     t_spaceship_trajectory_moving_system spaceship_moving { spaceship };
     spaceship_moving.update();
-
-    t_planet_circle_moving_system planet_circle_moving { game_components };
+    
+    t_system_planet_circle_moving planet_circle_moving { game_components };
     planet_circle_moving.update();
 
     if (_following) {
@@ -116,7 +116,7 @@ void MainWindow::timerEvent(QTimerEvent* event) {
 }
 
 void MainWindow::on_pushButton_3_clicked() {
-    t_spaceship_component& spaceship = game_components.spaceship(t_spaceship_id_entity { 0 });
+    t_component_spaceship& spaceship = game_components.spaceship(t_spaceship_id_entity { 0 });
 
     spaceship.position() = {
         float (ui->space_ship_spin_box_x->value()),
@@ -131,7 +131,7 @@ void MainWindow::on_pushButton_3_clicked() {
 }
 
 void MainWindow::on_pushButton_4_clicked() {
-    t_spaceship_component& spaceship = game_components.spaceship(t_spaceship_id_entity { 2 });
+    t_component_spaceship& spaceship = game_components.spaceship(t_spaceship_id_entity { 2 });
 
     spaceship.position() = {
         float (ui->space_ship_spin_box_x_enemy->value()),
@@ -146,7 +146,7 @@ void MainWindow::on_pushButton_4_clicked() {
 }
 
 void MainWindow::on_pushButton_5_clicked() {
-    t_spaceship_component& spaceship = game_components.spaceship(t_spaceship_id_entity { 2 });
+    t_component_spaceship& spaceship = game_components.spaceship(t_spaceship_id_entity { 2 });
 
     spaceship.trajectory() = {};
     _setting_enemy_path = true;

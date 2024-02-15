@@ -3,14 +3,22 @@
 
 #include "t_common_entities.h"
 
-struct t_minimap_size_entity {
+class [[maybe_unused]] t_size_container {
 public:
-    t_minimap_size_entity() {
+    t_size_container()
+        : t_size_container { {}, {} }
+    {
+    }
+
+    t_size_container(t_size_default_axis width, t_size_default_axis height)
+        : _width { width }
+        , _height { height }
+    {
     }
 
 private:
-    int _width {};
-    int _height {};
+    t_size_default_axis _width {};
+    t_size_default_axis _height {};
 };
 
 class [[maybe_unused]] t_minimap_component
@@ -19,7 +27,7 @@ public:
     t_minimap_component();
 
 private:
-    t_minimap_size_entity _size;
+    t_size_container _size;
 };
 
 #endif // T_MINIMAP_COMPONENT_H

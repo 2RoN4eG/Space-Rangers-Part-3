@@ -1,5 +1,5 @@
-#ifndef T_PLANETSYSTEM_COMPONENT_H
-#define T_PLANETSYSTEM_COMPONENT_H
+#ifndef T_COMPONENT_PLANETSYSTEM_H
+#define T_COMPONENT_PLANETSYSTEM_H
 
 #include "../t_common_entities.h"
 
@@ -14,4 +14,4 @@ private:
     t_planetsystem_id_entity _id;
 };
 
-#endif // T_PLANETSYSTEM_COMPONENT_H
+#endif // T_COMPONENT_PLANETSYSTEM_H

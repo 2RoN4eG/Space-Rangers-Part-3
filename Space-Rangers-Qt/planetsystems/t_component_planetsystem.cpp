@@ -1,4 +1,4 @@
-#include "t_planetsystem_component.h"
+#include "t_component_planetsystem.h"
 
 t_planetsystem_component::t_planetsystem_component(const t_planetsystem_id_entity id)
     : _id { id }
