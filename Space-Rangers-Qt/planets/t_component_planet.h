@@ -2,9 +2,7 @@
 #define T_COMPONENT_PLANET_H
 
 #include "../t_common_entities.h"
-#include "../t_value_stepper.h"
-#include "../linear_algebra/t_2d_position_entity.h"
-#include "../linear_algebra/t_2d_common.h"
+#include "../linear_algebra/t_2d_common_entities.h"
 
 
 
@@ -20,7 +18,7 @@ public:
     t_2d_position_entity& position();
     t_2d_position_entity get_position() const;
     void set_position(t_2d_position_entity position);
-    
+
     t_linear_speed_entity get_radial_speed() const;
     void set_radial_speed(const t_radial_speed_entity speed);
 
@@ -30,7 +28,7 @@ public:
     t_angle_entity          _angle_degrees { };
     t_linear_direction      _direction { 1 };
 
-    t_2d_position_entity    _position {};
+    t_2d_position_entity    _position_cache {};
     t_radial_speed_entity   _radial_speed { 5 };
 };
 

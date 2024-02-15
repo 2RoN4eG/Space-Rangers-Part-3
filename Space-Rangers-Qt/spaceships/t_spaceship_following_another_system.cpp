@@ -24,8 +24,8 @@ void t_spaceship_following_another_system::update(const t_delta delta) {
     const t_2d_position_entity& follower_position = _stalker.position();
 
     const t_2d_position_entity& target_position = _victim.position();
-
-    const t_2d_vector_entity directed_distance = t_make_2d_vector(follower_position, target_position);
+    
+    const t_2d_vector_entity directed_distance = t_make_2d_vector_system(follower_position, target_position);
 
     const t_2d_distance_length distance_length = t_2d_vector_length_system(directed_distance);
 

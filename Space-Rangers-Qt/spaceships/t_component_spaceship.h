@@ -2,8 +2,6 @@
 #define T_COMPONENT_SPACESHIP_H
 
 #include "../t_common_entities.h"
-#include "../t_common_defines.h"
-#include "../linear_algebra/t_2d_position_entity.h"
 #include "equipments/weapons/t_component_rocket_weapon.h"
 
 

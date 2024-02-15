@@ -13,15 +13,15 @@ t_planet_id_entity t_planet_component::id() const {
 
 
 t_2d_position_entity& t_planet_component::position() {
-    return _position;
+    return _position_cache;
 }
 
 t_2d_position_entity t_planet_component::get_position() const {
-    return _position;
+    return _position_cache;
 }
 
 void t_planet_component::set_position(t_2d_position_entity position) {
-    _position = position;
+    _position_cache = position;
 }
 
 

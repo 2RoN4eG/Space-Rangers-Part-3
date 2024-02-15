@@ -2,7 +2,6 @@
 #define T_COMPONENT_ROCKET_H
 
 #include "../../../t_common_entities.h"
-#include "../../../linear_algebra/t_2d_position_entity.h"
 
 
 class t_component_rocket

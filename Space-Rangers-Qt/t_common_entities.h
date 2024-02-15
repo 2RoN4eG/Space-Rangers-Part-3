@@ -2,8 +2,9 @@
 #define T_COMMON_ENTITIES_H
 
 #include "linear_algebra/t_2d_container_entity.h"
-#include "linear_algebra/t_2d_vector_entity.h"
-#include "t_value_stepper.h"
+#include "linear_algebra/t_2d_common_entities.h"
+
+#include "extra/t_value_stepper.h"
 
 
 using t_id_entity                                   = int;
@@ -14,7 +15,6 @@ using t_spaceship_id                                = t_spaceship_id_entity;
 using t_spaceship_id_generator                      = t_value_stepper<t_spaceship_id>;
 constexpr t_spaceship_id t_none_spaceship_id        = t_none_id;
 constexpr t_spaceship_id t_player_spaceship_id      = 0;
-// constexpr t_spaceship_id t_player_spaceship_id      = std::numeric_limits<t_id_entity>::min();
 
 using t_planet_id_entity                            = t_id_entity;
 using t_planet_id                                   = t_planet_id_entity;
@@ -46,6 +46,7 @@ using t_radius                                      = t_radius_entity;
 using t_angle_entity                                = float;
 
 using t_within_range_entity                         = int;
+using t_within_range                                = t_within_range_entity;
 
 using t_delta                                       = float;
 constexpr size_t t_frames_per_second                = 30;
@@ -55,7 +56,7 @@ using t_sprite_entity                               = int;
 
 using t_size_default_axis                           = int;
 
-using t_2d_distance_length                          = t_2d_vector_length;
+using t_2d_distance_length                          = t_2d_vector_length_entity;
 
 #define __CLASS_NAME__ typeid(*this).name()
 

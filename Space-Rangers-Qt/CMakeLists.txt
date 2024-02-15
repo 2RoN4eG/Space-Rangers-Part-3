@@ -25,13 +25,11 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
 
         t_common_entities.h                                             t_common_entities.cpp
 
-        t_value_stepper.h                                               t_value_stepper.cpp
+        extra/t_value_stepper.h                                         extra/t_value_stepper.cpp
 
         t_game_loop.h                                                   t_game_loop.cpp
         t_game_components.h                                             t_game_components.cpp
         t_game_systems.h                                                t_game_systems.cpp
-
-        t_common_defines.h                                              t_common_defines.cpp
 
         t_sprite_render_system.h                                        t_sprite_render_system.cpp
         t_game_render_system.h                                          t_game_render_system.cpp
@@ -42,11 +40,11 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
 
         linear_algebra/run_test_store_exception.h
 
-        linear_algebra/t_2d_common.h                                    linear_algebra/t_2d_common.cpp
+        linear_algebra/t_2d_common_entities.h                                    linear_algebra/t_2d_common_entities.cpp
         linear_algebra/t_2d_container_entity.h                          linear_algebra/t_2d_container_entity.cpp
-        linear_algebra/t_2d_position_entity.h                           linear_algebra/t_2d_position_entity.cpp
+
         linear_algebra/t_2d_position_systems.h                          linear_algebra/t_2d_position_systems.cpp
-        linear_algebra/t_2d_vector_entity.h                             linear_algebra/t_2d_vector_entity.cpp
+
         linear_algebra/t_2d_vector_systems.h                            linear_algebra/t_2d_vector_systems.cpp
 
         planetsystems/t_component_planetsystem.h                        planetsystems/t_component_planetsystem.cpp

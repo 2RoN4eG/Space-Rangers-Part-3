@@ -1,6 +1,6 @@
 #include "t_spaceship_systems.h"
 
-#include "../linear_algebra/t_2d_common.h"
+#include "../linear_algebra/t_2d_common_entities.h"
 #include "../t_common_entities.h"
 
 #include <cmath>

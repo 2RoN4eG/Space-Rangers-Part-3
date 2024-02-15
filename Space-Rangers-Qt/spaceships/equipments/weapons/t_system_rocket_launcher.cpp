@@ -21,8 +21,8 @@ void t_system_rocket_launcher::launch_rockets(const t_component_spaceship& space
     const t_2d_position_entity& aim_spaceship_position = aim_spaceship.get_position();
 
     const t_2d_position_entity& spaceship_position = spaceship.get_position();
-
-    const t_2d_vector_length distance_length = t_2d_distance_length_system(spaceship_position, aim_spaceship_position);
+    
+    const t_2d_vector_length_entity distance_length = t_2d_distance_length_system(spaceship_position, aim_spaceship_position);
 
     if (distance_length <= rocket_weapon.withing_range()) {
         std::vector<t_component_rocket>& rockets = _game_components.rockets();

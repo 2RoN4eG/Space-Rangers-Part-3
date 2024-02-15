@@ -2,12 +2,12 @@
 #define T_SYSTEM_ROCKET_LAUNCHER_H
 
 #include "../../../t_common_entities.h"
-#include "../../../t_value_stepper.h"
+#include "../../../extra/t_value_stepper.h"
 
 
 class t_game_components;
-using t_rocket_launcher_rocket_amount = int;
 class t_component_spaceship;
+using t_rocket_launcher_rocket_amount = int;
 
 
 class t_system_rocket_launcher
