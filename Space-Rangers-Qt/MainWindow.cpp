@@ -7,13 +7,17 @@
 
 #include "t_game_components.h"
 
-#include "spaceships/t_component_spaceship.h"
+
+#include "t_common_entities.h"
+
 #include "spaceships/t_spaceship_trajectory_moving_system.h"
 #include "spaceships/t_spaceship_following_another_system.h"
 #include "spaceships/equipments/weapons/t_spaceship_rocket_weapon_launcher_system.h"
 #include "spaceships/equipments/weapons/t_rocket_moving_system.h"
 
 #include "planets/t_system_planet_circle_moving.h"
+
+#include "spaceships/t_component_spaceship.h"
 
 #include "linear_algebra/t_2d_linear_algebra_systems.h"
 

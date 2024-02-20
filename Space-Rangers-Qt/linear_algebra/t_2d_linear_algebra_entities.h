@@ -41,19 +41,17 @@ protected:
     std::array<t_2d_axis, 2> _axises { {}, {} };
 };
 
-using t_floating_point      = float;
+using t_floating_point              = float;
 
-using t_2d_axis             = t_floating_point;
+using t_2d_axis                     = t_floating_point;
 
-using t_2d_vector_axis      = t_2d_axis;
-using t_2d_vector           = t_2d_container<t_2d_vector_axis>;
-using t_2d_vector_length    = t_floating_point;
-using t_2d_distance_length  = t_floating_point;
+using t_2d_vector_entity            = t_2d_container<t_2d_axis>;
+using t_2d_position_entity          = t_2d_container<t_2d_axis>;
+using t_2d_heading_entity           = t_2d_container<t_2d_axis>;
+using t_2d_course_entity            = t_2d_container<t_2d_axis>;
 
-using t_2d_scalar           = t_floating_point;
-
-using t_2d_position_axis    = t_2d_axis;
-using t_2d_position         = t_2d_container<t_2d_position_axis>;
-
+using t_2d_length_entity            = t_floating_point;
+using t_2d_scalar_entity            = t_floating_point;
+using t_2d_distance_entity          = t_floating_point;
 
 #endif // T_2D_LINEAR_ALGEBRA_ENTITIES_H

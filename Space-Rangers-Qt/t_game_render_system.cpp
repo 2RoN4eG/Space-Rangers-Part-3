@@ -61,7 +61,7 @@ void t_game_render_system::render_trajectory() const {
     set_painter_pen(_painter, Qt::yellow, 4);
 
     t_spaceship_component& spaceship = _game_components.spaceship(t_spaceship_id_entity { 2 });
-    for (const t_2d_position position : spaceship.trajectory()) {
+    for (const t_2d_position_entity position : spaceship.trajectory()) {
         _painter.drawPoint(position.x(), _size.height() - position.y());
     }
 }

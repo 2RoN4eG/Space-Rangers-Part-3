@@ -15,14 +15,14 @@ class t_game_components;
 class t_sprite_render_system
 {
 public:
-    t_sprite_render_system(std::vector<t_sprite_path>&& sprites, t_2d_position& position);
+    t_sprite_render_system(std::vector<t_sprite_path>&& sprites, t_2d_position_entity& position);
 
     void update(const t_delta delta = t_delta_frame_per_second);
 
 private:
     std::vector<t_sprite_path> _sprites {};
-
-    t_2d_position& _position;
+    
+    t_2d_position_entity& _position;
 };
 
 #endif // T_SPRITE_RENDER_SYSTEM_H

@@ -9,16 +9,16 @@ public:
         : t_size_container { {}, {} }
     {
     }
-
-    t_size_container(t_size_default_axis width, t_size_default_axis height)
+    
+    t_size_container(t_2d_size_axis width, t_2d_size_axis height)
         : _width { width }
         , _height { height }
     {
     }
 
 private:
-    t_size_default_axis _width {};
-    t_size_default_axis _height {};
+    t_2d_size_axis _width {};
+    t_2d_size_axis _height {};
 };
 
 class [[maybe_unused]] t_minimap_component

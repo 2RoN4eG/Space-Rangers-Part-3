@@ -33,30 +33,17 @@ constexpr t_rocket_id t_none_rocket_id              = t_none_id;
 
 using t_linear_speed_entity                         = t_integer;
 using t_radial_speed_entity                         = t_floating_point;
-
-using t_default_heading_axis                        = t_floating_point;
-using t_2d_heading_entity                              = t_2d_container<t_default_heading_axis>;
-
-using t_default_course_axis                         = t_floating_point;
-using t_course_entity                               = t_2d_container<t_default_course_axis>;
-
 using t_radius_entity                               = t_floating_point;
-using t_radius                                      = t_radius_entity;
-
 using t_angle_entity                                = t_floating_point;
-
 using t_within_range_entity                         = t_integer;
-using t_within_range                                = t_within_range_entity;
 
 using t_delta                                       = t_floating_point;
 constexpr size_t t_frames_per_second                = 30;
 constexpr t_delta t_delta_frame_per_second          = t_delta { 1. } / t_frames_per_second;
 
 using t_sprite_entity                               = t_integer;
-
-using t_size_default_axis                           = t_integer;
-
-using t_step_per_frame                              = t_2d_vector;
+using t_2d_size_axis                                = t_integer;
+using t_2d_step_per_frame                           = t_2d_vector_entity;
 
 #define __CLASS_NAME__ typeid(*this).name()
 

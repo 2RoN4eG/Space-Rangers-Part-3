@@ -20,21 +20,21 @@ t_spaceship_following_another_system::t_spaceship_following_another_system(t_gam
 }
 
 void t_spaceship_following_another_system::update(const t_delta delta) {
-    const t_2d_position& follower_position = _stalker.position();
+    const t_2d_position_entity& stalker_position = _stalker.position();
 
-    const t_2d_position& target_position = _victim.position();
-    
-    const t_2d_vector directed_distance = t_2d_system_make_vector(follower_position, target_position);
+    const t_2d_position_entity& victim_position = _victim.position();
 
-    const t_2d_distance_length distance_length = t_2d_vector_length_system(directed_distance);
+    const t_2d_course_entity stalker_course = make_vector_2d_system(stalker_position, victim_position);
 
-    if (distance_length <= _within_range) {
+    const t_2d_distance_entity distance = t_2d_vector_length_system(stalker_course);
+
+    if (distance <= _within_range) {
         return;
     }
 
-    const t_steps steps = distance_length / _stalker.get_linear_speed();
+    const t_steps steps = distance / _stalker.get_linear_speed();
 
-    const t_2d_vector step = t_2d_vector_division_system(directed_distance, steps);
+    const t_2d_step_per_frame step_per_frame = t_2d_vector_division_system(stalker_course, steps);
 
-    _stalker.position() = t_2d_vector_addition_system(follower_position, step);
+    _stalker.position() = t_2d_vector_addition_system(stalker_position, step_per_frame);
 }

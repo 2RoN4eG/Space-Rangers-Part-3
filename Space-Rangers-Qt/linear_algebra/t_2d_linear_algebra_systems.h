@@ -4,42 +4,40 @@
 #include "t_2d_linear_algebra_entities.h"
 
 
+bool t_2d_vector_are_collinear_system(const t_2d_vector_entity& lhs, const t_2d_vector_entity& rhs);
+
+t_2d_vector_entity t_2d_vector_addition_system(const t_2d_vector_entity& lhs, const t_2d_vector_entity& rhs);
+
+t_2d_vector_entity t_2d_vector_subtraction_system(const t_2d_vector_entity& lhs, const t_2d_vector_entity& rhs);
+
+t_2d_length_entity t_2d_vector_length_system(const t_2d_vector_entity& vector);
+
+t_2d_vector_entity t_2d_vector_multiplication_system(const t_2d_vector_entity& vector, const t_2d_scalar_entity scalar);
+
+t_2d_vector_entity t_2d_vector_division_system(const t_2d_vector_entity& vector, const t_2d_scalar_entity scalar);
+
+t_2d_vector_entity normalize_vector_system(const t_2d_vector_entity& vector);
+
+
+// TODO: Merge with t_2d_vector_addition_system
+t_2d_position_entity t_2d_position_addition_system(const t_2d_position_entity& lhs, const t_2d_position_entity& rhs);
+
+// TODO: Merge with t_2d_vector_subtraction_system
+t_2d_position_entity t_2d_position_subtraction_system(const t_2d_position_entity& lhs, const t_2d_position_entity& rhs);
+
+t_2d_vector_entity make_vector_2d_system(const t_2d_position_entity& from, const t_2d_position_entity& to);
+
+t_2d_vector_entity normalize_vector_system(const t_2d_position_entity& from, const t_2d_position_entity& to);
+
+t_2d_distance_entity make_distance_system(const t_2d_position_entity& from, const t_2d_position_entity& to);
+
+
+bool operator!=(const t_2d_vector_entity& lhs, const t_2d_vector_entity& rhs);
+
+bool operator==(const t_2d_vector_entity& lhs, const t_2d_vector_entity& rhs);
+
+
 std::ostream& operator<<(std::ostream& stream, const t_2d_container<t_2d_axis>& container);
-
-
-bool t_2d_vector_are_collinear_system(const t_2d_vector& lhs, const t_2d_vector& rhs);
-
-
-t_2d_vector t_2d_vector_addition_system(const t_2d_vector& lhs, const t_2d_vector& rhs);
-
-t_2d_vector t_2d_vector_subtraction_system(const t_2d_vector& lhs, const t_2d_vector& rhs);
-
-
-t_2d_vector_length t_2d_vector_length_system(const t_2d_vector& vector);
-
-
-t_2d_vector t_2d_vector_multiplication_system(const t_2d_vector& vector, const t_2d_scalar scalar);
-
-t_2d_vector t_2d_vector_division_system(const t_2d_vector& vector, const t_2d_scalar scalar);
-
-
-t_2d_vector t_2d_vector_normalization_system(const t_2d_vector& vector);
-
-
-bool operator!=(const t_2d_vector& lhs, const t_2d_vector& rhs);
-
-bool operator==(const t_2d_vector& lhs, const t_2d_vector& rhs);
-
-
-t_2d_position t_2d_position_addition_system(const t_2d_position& lhs, const t_2d_position& rhs);
-
-t_2d_position t_2d_position_subtraction_system(const t_2d_position& lhs, const t_2d_position& rhs);
-
-t_2d_vector t_2d_system_make_vector(const t_2d_position& from, const t_2d_position& to);
-
-t_2d_vector t_2d_system_make_normalized_vector(const t_2d_position& from, const t_2d_position& to);
-
-t_2d_vector_length t_2d_distance_length_system(const t_2d_position& from, const t_2d_position& to);
 
 
 void complex_test_2d_container_system(std::vector<std::runtime_error>& errors);

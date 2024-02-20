@@ -23,7 +23,7 @@ namespace {
         std::cout << "planets   : " << planets.size() << std::endl;
         for (const t_component_planet& planet : planets) {
             const t_planet_id_entity   pid = planet._id;
-            const t_2d_position pp  = planet.get_position();
+            const t_2d_position_entity pp  = planet.get_position();
 
             std::cout << "planet { id: " << pid << " } has position { x: " << pp.x() << ", y: " << pp.y() << " }" << std::endl;
         }
@@ -33,7 +33,7 @@ namespace {
         std::cout << "spaceships: " << spaceships.size() << std::endl;
         for (const t_spaceship_component& spaceship : spaceships) {
             const t_spaceship_id_entity sid = spaceship._id;
-            const t_2d_position  sp  = spaceship.get_position();
+            const t_2d_position_entity  sp  = spaceship.get_position();
 
             std::cout << "spaceship { id: " << sid << " } has position { x: " << sp.x() << ", y: " << sp.y() << " }" << std::endl;
         }

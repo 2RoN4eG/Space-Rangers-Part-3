@@ -31,7 +31,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
 
         t_game_loop.h                                                   t_game_loop.cpp
         t_game_components.h                                             t_game_components.cpp
-        t_game_systems.h                                                t_game_systems.cpp
+
         t_game_render_system.h                                          t_game_render_system.cpp
         t_sprite_render_system.h                                        t_sprite_render_system.cpp
 
@@ -55,7 +55,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         spaceships/t_component_spaceship.h                                          spaceships/t_component_spaceship.cpp
 
         spaceships/t_spaceship_landing_planet_system.h                              spaceships/t_spaceship_landing_planet_system.cpp
-        spaceships/t_spaceship_get_withing_range.h                                  spaceships/t_spaceship_get_withing_range.cpp
+        spaceships/t_spaceship_get_withing_range_system.h                           spaceships/t_spaceship_get_withing_range_system.cpp
 
         spaceships/equipments/weapons/t_component_rocket.h                          spaceships/equipments/weapons/t_component_rocket.cpp
         spaceships/equipments/weapons/t_rocket_weapon_component.h                   spaceships/equipments/weapons/t_rocket_weapon_component.cpp

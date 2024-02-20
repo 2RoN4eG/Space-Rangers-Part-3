@@ -17,9 +17,9 @@ t_spaceship_id_entity t_spaceship_component::id() const {
     return _id;
 }
 
-t_2d_position& t_spaceship_component::position() { return _position; }
+t_2d_position_entity& t_spaceship_component::position() { return _position; }
 
-t_2d_position t_spaceship_component::get_position() const { return _position; }
+t_2d_position_entity t_spaceship_component::get_position() const { return _position; }
 
 t_trajectory_entity& t_spaceship_component::trajectory() { return _trajectory; }
 

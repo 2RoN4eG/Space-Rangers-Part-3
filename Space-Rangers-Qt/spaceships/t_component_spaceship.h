@@ -5,7 +5,7 @@
 #include "equipments/weapons/t_rocket_weapon_component.h"
 
 
-using t_trajectory_entity = std::vector<t_2d_position>;
+using t_trajectory_entity = std::vector<t_2d_position_entity>;
 
 using t_is_player_entity = bool;
 
@@ -17,8 +17,8 @@ public:
 
     t_spaceship_id_entity id() const;
 
-    t_2d_position& position();
-    t_2d_position get_position() const;
+    t_2d_position_entity& position();
+    t_2d_position_entity get_position() const;
 
     t_trajectory_entity& trajectory();
 
@@ -30,16 +30,12 @@ public:
 public:
     t_spaceship_id_entity _id {};
 
-    t_2d_position _position {};
+    t_2d_position_entity _position {};
 
     t_linear_speed_entity _linear_speed { 25 };
 
-    // t_heading_entity _heading {};
-
-    // t_course_entity _course {};
-
     // weapon entities
-    
+
     t_spaceship_rocket_weapon_component _rocket_weapon {};
 
     // device entities
