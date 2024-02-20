@@ -4,8 +4,8 @@
 #include "../interfaces/i_game_system.h"
 
 class t_game_components;
-class t_component_spaceship;
-class t_planet_component;
+class t_spaceship_component;
+class t_component_planet;
 
 class t_spaceship_landing_planet_system : public i_game_system
 {
@@ -17,9 +17,9 @@ public:
     void update(const t_delta delta = t_delta_frame_per_second);
 
 private:
-    t_component_spaceship& _spaceship;
-
-    t_planet_component& _planet;
+    t_spaceship_component& _spaceship;
+    
+    t_component_planet& _planet;
 };
 
 #endif // T_SPACESHIP_LANDING_PLANET_SYSTEM_H

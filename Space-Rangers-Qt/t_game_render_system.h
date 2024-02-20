@@ -46,7 +46,7 @@ public:
 
     void render_planets() const;
 
-    void render_rokets() const;
+    void render_rockets() const;
 
 private:
     t_game_components& _game_components;

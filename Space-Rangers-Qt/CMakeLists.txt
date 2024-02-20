@@ -27,41 +27,43 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
 
         extra/t_value_stepper.h                                         extra/t_value_stepper.cpp
 
+        t_common_systems.h                                              t_common_systems.cpp
+
         t_game_loop.h                                                   t_game_loop.cpp
         t_game_components.h                                             t_game_components.cpp
         t_game_systems.h                                                t_game_systems.cpp
-
-        t_sprite_render_system.h                                        t_sprite_render_system.cpp
         t_game_render_system.h                                          t_game_render_system.cpp
+        t_sprite_render_system.h                                        t_sprite_render_system.cpp
 
-        t_minimap_component.h                                           t_minimap_component.cpp
+        t_minimap_component.h                                                       t_minimap_component.cpp
 
-        interfaces/i_game_system.h                                      interfaces/i_game_system.cpp
+        interfaces/i_game_system.h                                                  interfaces/i_game_system.cpp
 
-        linear_algebra/run_test_store_exception.h
+        linear_algebra/t_run_test_store_exception.h
 
-        linear_algebra/t_2d_common_entities.h                                    linear_algebra/t_2d_common_entities.cpp
-        linear_algebra/t_2d_container_entity.h                          linear_algebra/t_2d_container_entity.cpp
+        linear_algebra/t_2d_linear_algebra_entities.h                               linear_algebra/t_2d_linear_algebra_entities.cpp
+        linear_algebra/t_2d_linear_algebra_systems.h                                linear_algebra/t_2d_linear_algebra_systems.cpp
 
-        linear_algebra/t_2d_position_systems.h                          linear_algebra/t_2d_position_systems.cpp
+        planetsystems/t_component_planetsystem.h                                    planetsystems/t_component_planetsystem.cpp
 
-        linear_algebra/t_2d_vector_systems.h                            linear_algebra/t_2d_vector_systems.cpp
+        planets/t_component_planet.h                                                planets/t_component_planet.cpp
+        planets/t_system_make_planets.h                                             planets/t_system_make_planets.cpp
+        planets/t_system_planet_circle_moving.h                                     planets/t_system_planet_circle_moving.cpp
 
-        planetsystems/t_component_planetsystem.h                        planetsystems/t_component_planetsystem.cpp
+        spaceships/t_spaceship_trajectory_moving_system.h                           spaceships/t_spaceship_trajectory_moving_system.cpp
+        spaceships/t_spaceship_following_another_system.h                           spaceships/t_spaceship_following_another_system.cpp
+        spaceships/t_component_spaceship.h                                          spaceships/t_component_spaceship.cpp
 
-        planets/t_component_planet.h                                    planets/t_component_planet.cpp
-        planets/t_system_make_planets.h                                 planets/t_system_make_planets.cpp
-        planets/t_system_planet_circle_moving.h                         planets/t_system_planet_circle_moving.cpp
+        spaceships/t_spaceship_landing_planet_system.h                              spaceships/t_spaceship_landing_planet_system.cpp
+        spaceships/t_spaceship_get_withing_range.h                                  spaceships/t_spaceship_get_withing_range.cpp
 
-        spaceships/t_spaceship_trajectory_moving_system.h               spaceships/t_spaceship_trajectory_moving_system.cpp
-        spaceships/t_spaceship_following_another_system.h               spaceships/t_spaceship_following_another_system.cpp
-        spaceships/t_component_spaceship.h                              spaceships/t_component_spaceship.cpp
-        spaceships/t_spaceship_systems.h                                spaceships/t_spaceship_systems.cpp
-        spaceships/t_spaceship_landing_planet_system.h                  spaceships/t_spaceship_landing_planet_system.cpp
+        spaceships/equipments/weapons/t_component_rocket.h                          spaceships/equipments/weapons/t_component_rocket.cpp
+        spaceships/equipments/weapons/t_rocket_weapon_component.h                   spaceships/equipments/weapons/t_rocket_weapon_component.cpp
+        spaceships/equipments/weapons/t_spaceship_rocket_weapon_launcher_system.h   spaceships/equipments/weapons/t_spaceship_rocket_weapon_launcher_system.cpp
+        spaceships/equipments/weapons/t_rocket_moving_system.h                      spaceships/equipments/weapons/t_rocket_moving_system.cpp
 
-        spaceships/equipments/weapons/t_component_rocket.h              spaceships/equipments/weapons/t_component_rocket.cpp
-        spaceships/equipments/weapons/t_system_rocket_launcher.h        spaceships/equipments/weapons/t_system_rocket_launcher.cpp
-        spaceships/equipments/weapons/t_component_rocket_weapon.h       spaceships/equipments/weapons/t_component_rocket_weapon.cpp
+        spacecenters/t_spacecenter_component.h                                      spacecenters/t_spacecenter_component.cpp
+        spaceships/t_system_spaceship_locking_on_aim.h                              spaceships/t_system_spaceship_locking_on_aim.cpp
     )
 
 # Define target properties for Android with Qt 6 as:

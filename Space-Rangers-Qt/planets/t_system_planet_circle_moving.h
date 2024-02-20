@@ -4,7 +4,7 @@
 #include "../interfaces/i_game_system.h"
 
 class t_game_components;
-class t_planet_component;
+class t_component_planet;
 
 class t_system_planet_circle_moving : public i_game_system
 {
@@ -14,7 +14,7 @@ public:
     void update(const t_delta delta = t_delta_frame_per_second);
 
 private:
-    void move_planet(t_planet_component& planet, const t_delta delta);
+    void move_planet(t_component_planet& planet, const t_delta delta);
 
 private:
     t_game_components& _game_components;

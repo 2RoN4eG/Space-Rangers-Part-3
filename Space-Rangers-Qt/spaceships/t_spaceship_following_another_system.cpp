@@ -2,8 +2,7 @@
 
 #include "../t_game_components.h"
 
-#include "../linear_algebra/t_2d_position_systems.h"
-#include "../linear_algebra/t_2d_vector_systems.h"
+#include "../linear_algebra/t_2d_linear_algebra_systems.h"
 
 namespace {
 using t_steps = float;
@@ -21,21 +20,21 @@ t_spaceship_following_another_system::t_spaceship_following_another_system(t_gam
 }
 
 void t_spaceship_following_another_system::update(const t_delta delta) {
-    const t_2d_position_entity& follower_position = _stalker.position();
+    const t_2d_position& follower_position = _stalker.position();
 
-    const t_2d_position_entity& target_position = _victim.position();
+    const t_2d_position& target_position = _victim.position();
     
-    const t_2d_vector_entity directed_distance = t_make_2d_vector_system(follower_position, target_position);
+    const t_2d_vector directed_distance = t_2d_system_make_vector(follower_position, target_position);
 
     const t_2d_distance_length distance_length = t_2d_vector_length_system(directed_distance);
 
     if (distance_length <= _within_range) {
         return;
     }
-    
+
     const t_steps steps = distance_length / _stalker.get_linear_speed();
 
-    const t_2d_vector_entity step = t_2d_vector_division_system(directed_distance, steps);
+    const t_2d_vector step = t_2d_vector_division_system(directed_distance, steps);
 
     _stalker.position() = t_2d_vector_addition_system(follower_position, step);
 }

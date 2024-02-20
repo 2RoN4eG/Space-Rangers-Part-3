@@ -5,9 +5,11 @@
 #include <QTimer>
 
 QT_BEGIN_NAMESPACE
+
 namespace Ui {
 class MainWindow;
 }
+
 QT_END_NAMESPACE
 
 class MainWindow : public QMainWindow
@@ -47,4 +49,5 @@ private:
 
     int _timer_id { -1 };
 };
+
 #endif // MAINWINDOW_H

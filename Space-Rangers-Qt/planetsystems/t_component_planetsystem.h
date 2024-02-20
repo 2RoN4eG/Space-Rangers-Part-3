@@ -3,10 +3,10 @@
 
 #include "../t_common_entities.h"
 
-class t_planetsystem_component
+class t_component_planetsystem
 {
 public:
-    t_planetsystem_component(const t_planetsystem_id_entity id);
+    t_component_planetsystem(const t_planetsystem_id_entity id);
 
     t_spaceship_id_entity id() const;
 
