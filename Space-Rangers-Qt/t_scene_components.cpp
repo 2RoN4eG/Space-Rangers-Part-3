@@ -1,4 +1,4 @@
-#include "t_game_components.h"
+#include "t_scene_components.h"
 
 #include <string>
 #include <iostream>
@@ -18,7 +18,7 @@ namespace {
     }
     
     void print_planetsystems([[maybe_unused]] const std::vector<t_component_planetsystem>& planetsystems) { }
-    
+
     void print_planets(const std::vector<t_component_planet>& planets) {
         std::cout << "planets   : " << planets.size() << std::endl;
         for (const t_component_planet& planet : planets) {
@@ -43,7 +43,7 @@ namespace {
 }
 
 
-t_game_components::t_game_components()
+t_scene_components::t_scene_components()
     : _spaceships { make_player(), make_spaceship() }
     , _planets { t_system_make_planets(5) }
     , _planetsystems {}
@@ -59,29 +59,29 @@ t_game_components::t_game_components()
 }
 
 
-std::vector<t_component_planetsystem>& t_game_components::planetsystems() {
-    return _planetsystems;
-}
+// std::vector<t_component_planetsystem>& t_scene_components::planetsystems() {
+//     return _planetsystems;
+// }
 
-t_component_planetsystem& t_game_components::planetsystem(const t_planetsystem_id_entity id) {
-    return item_by_id<t_component_planetsystem>(id, _planetsystems);
-}
+// t_component_planetsystem& t_scene_components::planetsystem(const t_planetsystem_id_entity id) {
+//     return item_by_id<t_component_planetsystem>(id, _planetsystems);
+// }
 
 
-std::vector<t_component_planet>& t_game_components::planets() {
+std::vector<t_component_planet>& t_scene_components::planets() {
     return _planets;
 }
 
-t_component_planet& t_game_components::planet(const t_planet_id_entity id) {
+t_component_planet& t_scene_components::planet(const t_planet_id_entity id) {
     return item_by_id<t_component_planet>(id, _planets);
 }
 
 
-std::vector<t_spaceship_component>& t_game_components::spaceships() {
+std::vector<t_spaceship_component>& t_scene_components::spaceships() {
     return _spaceships;
 }
 
-t_spaceship_component &t_game_components::player_spaceship() {
+t_spaceship_component &t_scene_components::player_spaceship() {
     for (t_spaceship_component& spaceship : _spaceships) {
         if (!spaceship.is_player()) { continue; }
 
@@ -91,11 +91,11 @@ t_spaceship_component &t_game_components::player_spaceship() {
     throw std::runtime_error { "player's spaceship does not exist" };
 }
 
-t_spaceship_component& t_game_components::spaceship(const t_spaceship_id_entity id) {
+t_spaceship_component& t_scene_components::spaceship(const t_spaceship_id_entity id) {
     return item_by_id<t_spaceship_component>(id, _spaceships);
 }
 
 
-std::vector<t_component_rocket>& t_game_components::rockets() {
+std::vector<t_component_rocket>& t_scene_components::rockets() {
     return _rockets;
 }

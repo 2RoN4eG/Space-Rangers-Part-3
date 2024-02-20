@@ -5,7 +5,7 @@
 
 #include <vector>
 
-class t_game_components;
+class t_scene_components;
 
 class QPainter;
 class QWidget;
@@ -28,7 +28,7 @@ class reference_wrapper {
 class [[maybe_unused]] t_game_render_system
 {
 public:
-    t_game_render_system(const t_render_surface_size& size, t_render_painter& painter, t_game_components& game_components);
+    t_game_render_system(const t_render_surface_size& size, t_render_painter& painter, t_scene_components& scene_components);
 
     void update(const t_delta delta = t_delta_frame_per_second) const;
 
@@ -49,7 +49,7 @@ public:
     void render_rockets() const;
 
 private:
-    t_game_components& _game_components;
+    t_scene_components& _scene_components;
 
     t_render_painter& _painter;
 

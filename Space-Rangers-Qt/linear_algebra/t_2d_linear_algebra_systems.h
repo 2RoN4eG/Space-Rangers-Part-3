@@ -10,14 +10,13 @@ t_2d_vector_entity t_2d_vector_addition_system(const t_2d_vector_entity& lhs, co
 
 t_2d_vector_entity t_2d_vector_subtraction_system(const t_2d_vector_entity& lhs, const t_2d_vector_entity& rhs);
 
-t_2d_length_entity t_2d_vector_length_system(const t_2d_vector_entity& vector);
+t_scalar_length_entity t_2d_vector_length_system(const t_2d_vector_entity& vector);
 
-t_2d_vector_entity t_2d_vector_multiplication_system(const t_2d_vector_entity& vector, const t_2d_scalar_entity scalar);
+t_2d_vector_entity t_2d_vector_multiplication_system(const t_2d_vector_entity& vector, const t_scalar_entity scalar);
 
-t_2d_vector_entity t_2d_vector_division_system(const t_2d_vector_entity& vector, const t_2d_scalar_entity scalar);
+t_2d_vector_entity t_2d_vector_division_system(const t_2d_vector_entity& vector, const t_scalar_entity scalar);
 
-t_2d_vector_entity normalize_vector_system(const t_2d_vector_entity& vector);
-
+t_2d_vector_entity normalize_2d_vector_system(const t_2d_vector_entity& vector);
 
 // TODO: Merge with t_2d_vector_addition_system
 t_2d_position_entity t_2d_position_addition_system(const t_2d_position_entity& lhs, const t_2d_position_entity& rhs);
@@ -29,7 +28,7 @@ t_2d_vector_entity make_vector_2d_system(const t_2d_position_entity& from, const
 
 t_2d_vector_entity normalize_vector_system(const t_2d_position_entity& from, const t_2d_position_entity& to);
 
-t_2d_distance_entity make_distance_system(const t_2d_position_entity& from, const t_2d_position_entity& to);
+t_scalar_distance_entity make_distance_system(const t_2d_position_entity& from, const t_2d_position_entity& to);
 
 
 bool operator!=(const t_2d_vector_entity& lhs, const t_2d_vector_entity& rhs);

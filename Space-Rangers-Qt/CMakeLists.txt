@@ -23,17 +23,17 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(Space-Rangers-Qt MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
 
-        t_common_entities.h                                             t_common_entities.cpp
+        t_common_entities.h                                                         t_common_entities.cpp
 
-        extra/t_value_stepper.h                                         extra/t_value_stepper.cpp
+        extra/t_value_stepper.h                                                     extra/t_value_stepper.cpp
 
-        t_common_systems.h                                              t_common_systems.cpp
+        t_common_systems.h                                                          t_common_systems.cpp
 
-        t_game_loop.h                                                   t_game_loop.cpp
-        t_game_components.h                                             t_game_components.cpp
+        t_scene_components.h                                                        t_scene_components.cpp
 
-        t_game_render_system.h                                          t_game_render_system.cpp
-        t_sprite_render_system.h                                        t_sprite_render_system.cpp
+        t_game_render_system.h                                                      t_game_render_system.cpp
+
+        t_sprite_render_system.h                                                    t_sprite_render_system.cpp
 
         t_minimap_component.h                                                       t_minimap_component.cpp
 

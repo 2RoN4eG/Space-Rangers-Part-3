@@ -1,17 +1,17 @@
 #include "t_system_planet_circle_moving.h"
 
-#include "../t_game_components.h"
+#include "../t_scene_components.h"
 #include "../t_common_entities.h"
 #include "../t_common_systems.h"
 
-t_system_planet_circle_moving::t_system_planet_circle_moving(t_game_components& game_components)
+t_system_planet_circle_moving::t_system_planet_circle_moving(t_scene_components& scene_components)
     : i_game_system { __CLASS_NAME__ }
-    , _game_components { game_components }
+    , _scene_components { scene_components }
 {
 }
 
 void t_system_planet_circle_moving::update(const t_delta delta) {
-    for (t_component_planet& planet : _game_components.planets()) {
+    for (t_component_planet& planet : _scene_components.planets()) {
         move_planet(planet, delta);
     }
 }

@@ -9,7 +9,7 @@
 
 
 using t_sprite_path = std::string_view;
-class t_game_components;
+class t_scene_components;
 
 
 class t_sprite_render_system

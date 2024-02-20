@@ -1,16 +1,16 @@
 #include "t_spaceship_rocket_weapon_launcher_system.h"
 
-#include "../../../t_game_components.h"
+#include "../../../t_scene_components.h"
 #include "../../../linear_algebra/t_2d_linear_algebra_systems.h"
 #include "../../../t_common_systems.h"
 
 #include <iostream>
 
 
-t_spaceship_rocket_weapon_launcher_system::t_spaceship_rocket_weapon_launcher_system(t_game_components& game_components,
+t_spaceship_rocket_weapon_launcher_system::t_spaceship_rocket_weapon_launcher_system(t_scene_components& scene_components,
                                                    const t_spaceship_id_entity stalker_id)
-    : _game_components { game_components }
-    , _stalker { game_components.spaceship(stalker_id) }
+    : _scene_components { scene_components }
+    , _stalker { scene_components.spaceship(stalker_id) }
 {
 }
 
@@ -19,7 +19,7 @@ bool t_spaceship_rocket_weapon_launcher_system::requirements_completed(const t_s
 
     const t_2d_position_entity& aim_position = aim_spaceship.get_position();
 
-    const t_2d_length_entity distance_length = make_distance_system(stalker_position, aim_position);
+    const t_scalar_length_entity distance_length = make_distance_system(stalker_position, aim_position);
 
     const t_rocket_weapon_withing_range rocket_weapon_withing_range = rocket_weapon.withing_range();
 
@@ -27,11 +27,11 @@ bool t_spaceship_rocket_weapon_launcher_system::requirements_completed(const t_s
 }
 
 void t_spaceship_rocket_weapon_launcher_system::launch_rockets(const t_spaceship_component& stalker, const t_spaceship_id_entity aim_id) {
-    std::vector<t_component_rocket>& rockets_array = _game_components.rockets();
+    std::vector<t_component_rocket>& rockets_array = _scene_components.rockets();
 
     const t_2d_position_entity&& stalker_position = stalker.get_position();
 
-    const t_spaceship_component& aim_spaceship = _game_components.spaceship(aim_id);
+    const t_spaceship_component& aim_spaceship = _scene_components.spaceship(aim_id);
 
     const t_2d_position_entity&& aim_position = aim_spaceship.get_position();
 
@@ -59,7 +59,7 @@ void t_spaceship_rocket_weapon_launcher_system::update(const t_delta delta) {
 
     const t_spaceship_id_entity aim_id = rocket_weapon.get_aim_id();
 
-    const t_spaceship_component& aim = _game_components.spaceship(aim_id);
+    const t_spaceship_component& aim = _scene_components.spaceship(aim_id);
 
     if (requirements_completed(rocket_weapon, aim)) {
         launch_rockets(_stalker, aim_id);

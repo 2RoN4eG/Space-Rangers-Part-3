@@ -3,18 +3,18 @@
 
 #include "../t_common_entities.h"
 
-class t_game_components;
+class t_scene_components;
 class t_spaceship_component;
 
-class t_spaceship_get_withing_range_system
+class t_spaceship_withing_range_system
 {
 public:
-    t_spaceship_get_withing_range_system(t_game_components& game_components, const t_spaceship_id_entity spaceship_id);
+    t_spaceship_withing_range_system(t_scene_components& scene_components, const t_spaceship_id_entity spaceship_id);
 
     void update(const t_delta delta = t_delta_frame_per_second);
 
 private:
-    t_game_components& _game_components;
+    t_scene_components& _scene_components;
 
     t_spaceship_component& _spaceship;
 };

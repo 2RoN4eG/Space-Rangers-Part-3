@@ -6,13 +6,13 @@
 
 // TODO: Корабль stalker должен следовать за кораблем victim сохраняя на дистанции выстрела
 
-class t_game_components;
+class t_scene_components;
 class t_spaceship_component;
 
 class t_spaceship_following_another_system : public i_game_system
 {
 public:
-    t_spaceship_following_another_system(t_game_components& game_components,
+    t_spaceship_following_another_system(t_scene_components& scene_components,
                                          const t_spaceship_id_entity stalker_id,
                                          const t_spaceship_id_entity victim_id,
                                          const t_within_range_entity within_range = 60);

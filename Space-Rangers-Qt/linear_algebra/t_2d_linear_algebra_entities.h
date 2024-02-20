@@ -50,8 +50,8 @@ using t_2d_position_entity          = t_2d_container<t_2d_axis>;
 using t_2d_heading_entity           = t_2d_container<t_2d_axis>;
 using t_2d_course_entity            = t_2d_container<t_2d_axis>;
 
-using t_2d_length_entity            = t_floating_point;
-using t_2d_scalar_entity            = t_floating_point;
-using t_2d_distance_entity          = t_floating_point;
+using t_scalar_entity               = t_floating_point;
+using t_scalar_length_entity        = t_floating_point;
+using t_scalar_distance_entity      = t_floating_point;
 
 #endif // T_2D_LINEAR_ALGEBRA_ENTITIES_H
