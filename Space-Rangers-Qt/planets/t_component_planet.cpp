@@ -25,7 +25,7 @@ void t_component_planet::set_position(t_2d_position_entity position) {
 }
 
 
-t_linear_speed_entity t_component_planet::get_radial_speed() const {
+t_speed_entity t_component_planet::get_radial_speed() const {
     return _radial_speed;
 }
 

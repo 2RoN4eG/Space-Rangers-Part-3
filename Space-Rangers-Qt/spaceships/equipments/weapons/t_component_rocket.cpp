@@ -19,7 +19,7 @@ t_2d_position_entity& t_component_rocket::position() { return _position; }
 
 t_2d_position_entity t_component_rocket::get_position() const { return _position; }
 
-t_linear_speed_entity t_component_rocket::get_linear_speed() const { return _linear_speed; }
+t_speed_entity t_component_rocket::get_speed() const { return _linear_speed; }
 
 // void t_component_rocket::set_linear_speed(const t_linear_speed_entity linear_speed) { _linear_speed = linear_speed; }
 

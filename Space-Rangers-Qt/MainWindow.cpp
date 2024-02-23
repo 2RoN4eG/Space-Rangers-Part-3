@@ -68,15 +68,7 @@ void MainWindow::paintEvent(QPaintEvent* event) {
 
     t_game_render_system render { size, painter, scene_components };
 
-    render.render_planets();
-
-    render.render_trajectory();
-
-    render.render_spaceships();
-
-    render.render_player();
-
-    render.render_rockets();
+    render.update();
 
     resizeEvent(nullptr);
 }

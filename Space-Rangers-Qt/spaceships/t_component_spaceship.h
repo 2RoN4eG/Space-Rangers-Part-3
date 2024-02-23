@@ -22,8 +22,8 @@ public:
 
     t_trajectory_entity& trajectory();
 
-    t_linear_speed_entity get_linear_speed() const;
-    void set_linear_speed(const t_linear_speed_entity speed);
+    t_speed_entity get_speed() const;
+    void set_linear_speed(const t_speed_entity speed);
 
     t_is_player_entity is_player() const;
 
@@ -32,7 +32,7 @@ public:
 
     t_2d_position_entity _position {};
 
-    t_linear_speed_entity _linear_speed { 25 };
+    t_speed_entity _linear_speed { 500. };
 
     // weapon entities
 

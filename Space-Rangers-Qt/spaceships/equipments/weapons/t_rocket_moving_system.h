@@ -5,6 +5,7 @@
 
 class t_scene_components;
 class t_component_rocket;
+class t_spaceship_component;
 
 
 class t_rocket_moving_system
@@ -14,7 +15,7 @@ public:
 
     void update(const t_delta delta = t_delta_frame_per_second);
 
-    void move_rocket(t_component_rocket& rocket, const t_delta delta);
+    void move_rocket_for(t_component_rocket& rocket, const t_spaceship_component& aim_spaceship, const t_delta delta);
 
 private:
     t_scene_components& _scene_components;

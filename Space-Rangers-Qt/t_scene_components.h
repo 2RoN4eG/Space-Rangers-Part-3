@@ -24,7 +24,7 @@ public:
     std::vector<t_component_rocket>& rockets();
 
 private:
-    std::vector<t_component_planetsystem> _planetsystems;
+    // std::vector<t_component_planetsystem> _planetsystems;
 
     std::vector<t_component_planet> _planets;
 

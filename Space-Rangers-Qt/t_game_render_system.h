@@ -17,27 +17,15 @@ using t_render_surface_size = QSize;
 using t_render_painter      = QPainter;
 using t_render_pen_color    = QColor;
 
-class i_render_system { int v {}; };
-using i_render_system_pointer = i_render_system*;
-using i_render_system_reference = i_render_system_pointer;
 
-template <typename t_reference>
-class reference_wrapper {
-};
-
-class [[maybe_unused]] t_game_render_system
+class t_game_render_system
 {
 public:
     t_game_render_system(const t_render_surface_size& size, t_render_painter& painter, t_scene_components& scene_components);
 
     void update(const t_delta delta = t_delta_frame_per_second) const;
 
-    void register_render_system(i_render_system_reference system);
-    void register_render_system_before(i_render_system_reference system, std::string_view before);
-    void register_render_system_after(i_render_system_reference system, std::string_view after);
-
-    void unregister_render_system(i_render_system_reference system);
-
+private:
     void render_player() const;
 
     void render_spaceships() const;
@@ -54,8 +42,6 @@ private:
     t_render_painter& _painter;
 
     const t_render_surface_size& _size;
-
-    std::vector<i_render_system_pointer> _render_systems {};
 };
 
 void set_painter_pen(t_render_painter& painter, const t_render_pen_color& color, int width);

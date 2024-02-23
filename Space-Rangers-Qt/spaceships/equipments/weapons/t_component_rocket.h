@@ -16,7 +16,7 @@ public:
     t_2d_position_entity& position();
     t_2d_position_entity get_position() const;
 
-    t_linear_speed_entity get_linear_speed() const;
+    t_speed_entity get_speed() const;
 
 protected:
     t_rocket_id_entity _id {};
@@ -25,7 +25,7 @@ protected:
     
     t_2d_position_entity _position {};
 
-    t_linear_speed_entity _linear_speed { 25 };
+    t_speed_entity _linear_speed { 600. };
     // t_heading_entity heading {};
     // t_course_entity course {};
 };

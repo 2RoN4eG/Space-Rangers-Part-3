@@ -23,9 +23,9 @@ t_2d_position_entity t_spaceship_component::get_position() const { return _posit
 
 t_trajectory_entity& t_spaceship_component::trajectory() { return _trajectory; }
 
-t_linear_speed_entity t_spaceship_component::get_linear_speed() const { return _linear_speed; }
+t_speed_entity t_spaceship_component::get_speed() const { return _linear_speed; }
 
-void t_spaceship_component::set_linear_speed(const t_linear_speed_entity speed) { _linear_speed = speed; }
+void t_spaceship_component::set_linear_speed(const t_speed_entity speed) { _linear_speed = speed; }
 
 t_is_player_entity t_spaceship_component::is_player() const { return _is_player; }
 

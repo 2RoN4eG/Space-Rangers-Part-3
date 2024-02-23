@@ -18,8 +18,8 @@ public:
     t_2d_position_entity& position();
     t_2d_position_entity get_position() const;
     void set_position(t_2d_position_entity position);
-
-    t_linear_speed_entity get_radial_speed() const;
+    
+    t_speed_entity get_radial_speed() const;
     void set_radial_speed(const t_radial_speed_entity speed);
 
 public:

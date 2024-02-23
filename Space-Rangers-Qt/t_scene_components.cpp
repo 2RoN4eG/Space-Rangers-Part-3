@@ -17,7 +17,7 @@ namespace {
         throw std::runtime_error { "item by id " + std::to_string(id) + " does not exist" };
     }
     
-    void print_planetsystems([[maybe_unused]] const std::vector<t_component_planetsystem>& planetsystems) { }
+    // void print_planetsystems([[maybe_unused]] const std::vector<t_component_planetsystem>& planetsystems) { }
 
     void print_planets(const std::vector<t_component_planet>& planets) {
         std::cout << "planets   : " << planets.size() << std::endl;
@@ -46,10 +46,10 @@ namespace {
 t_scene_components::t_scene_components()
     : _spaceships { make_player(), make_spaceship() }
     , _planets { t_system_make_planets(5) }
-    , _planetsystems {}
+    // , _planetsystems {}
     , _rockets {}
 {
-    print_planetsystems(_planetsystems);
+    // print_planetsystems(_planetsystems);
 
     print_planets(_planets);
 
