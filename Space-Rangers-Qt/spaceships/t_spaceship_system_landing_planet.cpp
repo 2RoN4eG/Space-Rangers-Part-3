@@ -1,11 +1,11 @@
-#include "t_spaceship_landing_planet_system.h"
+#include "t_spaceship_system_landing_planet.h"
 
 #include "../t_scene_components.h"
 #include "../t_common_entities.h"
 
-#include "../planets/t_component_planet.h"
+#include "../planets/t_planet_component.h"
 
-t_spaceship_landing_planet_system::t_spaceship_landing_planet_system(t_scene_components& scene_components,
+t_spaceship_system_landing_planet::t_spaceship_system_landing_planet(t_scene_components& scene_components,
                                                                      const t_spaceship_id_entity spaceship_id,
                                                                      const t_planet_id_entity planet_id)
     : i_game_system { __CLASS_NAME__ }
@@ -14,5 +14,5 @@ t_spaceship_landing_planet_system::t_spaceship_landing_planet_system(t_scene_com
 {
 }
 
-void t_spaceship_landing_planet_system::update(const t_delta delta) {
+void t_spaceship_system_landing_planet::update(const t_delta delta) {
 }

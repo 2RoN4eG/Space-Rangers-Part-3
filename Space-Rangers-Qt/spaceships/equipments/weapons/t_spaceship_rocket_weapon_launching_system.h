@@ -1,5 +1,5 @@
-#ifndef T_SPACESHIP_ROCKET_WEAPON_LAUNCHER_SYSTEM_H
-#define T_SPACESHIP_ROCKET_WEAPON_LAUNCHER_SYSTEM_H
+#ifndef T_SPACESHIP_ROCKET_WEAPON_LAUNCHING_SYSTEM_H
+#define T_SPACESHIP_ROCKET_WEAPON_LAUNCHING_SYSTEM_H
 
 #include "../../../t_common_entities.h"
 #include "../../../extra/t_value_stepper.h"
@@ -32,4 +32,4 @@ private:
     t_rocket_id_generator _rocket_id_generator { 0, 1 };
 };
 
-#endif // T_SPACESHIP_ROCKET_WEAPON_LAUNCHER_SYSTEM_H
+#endif // T_SPACESHIP_ROCKET_WEAPON_LAUNCHING_SYSTEM_H

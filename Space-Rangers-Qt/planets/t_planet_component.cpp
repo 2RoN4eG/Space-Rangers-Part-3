@@ -1,6 +1,6 @@
-#include "t_component_planet.h"
+#include "t_planet_component.h"
 
-t_component_planet::t_component_planet(const t_planet_id_entity id, const t_radius_entity radius, const t_angle_entity angle)
+t_component_planet::t_component_planet(const t_planet_id_entity id, const t_radius_entity radius, const t_scalar_angle_entity angle)
     : _id { id }
     , _radius { radius }
     , _degrees { angle }
@@ -25,7 +25,7 @@ void t_component_planet::set_position(t_2d_position_entity position) {
 }
 
 
-t_speed_entity t_component_planet::get_radial_speed() const {
+t_scalar_speed_entity t_component_planet::get_radial_speed() const {
     return _radial_speed;
 }
 

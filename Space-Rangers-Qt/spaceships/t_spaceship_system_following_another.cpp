@@ -1,4 +1,4 @@
-#include "t_spaceship_following_another_system.h"
+#include "t_spaceship_system_following_another.h"
 
 #include "../t_scene_components.h"
 
@@ -10,12 +10,11 @@ using t_distance_in_frames = float;
 
 t_spaceship_following_another_system::t_spaceship_following_another_system(t_scene_components& scene_components,
                                                                            const t_spaceship_id_entity stalker_id,
-                                                                           const t_spaceship_id_entity victim_id,
-                                                                           const t_within_range_entity within_range)
+                                                                           const t_spaceship_id_entity victim_id)
     : i_game_system { __CLASS_NAME__ }
     , _stalker { scene_components.spaceship(stalker_id) }
     , _victim { scene_components.spaceship(victim_id) }
-    , _within_range { within_range }
+    , _get_within_range { scene_components, stalker_id }
 {
 }
 
@@ -28,11 +27,11 @@ void t_spaceship_following_another_system::update(const t_delta delta) {
 
     const t_scalar_distance_entity distance = t_2d_vector_length_system(stalker_course);
 
-    if (distance <= _within_range) {
+    if (distance <= _get_within_range()) {
         return;
     }
 
-    const t_speed_entity stalker_delta_speed = _stalker.get_speed() * delta;
+    const t_scalar_speed_entity stalker_delta_speed = _stalker.get_speed() * delta;
 
     std::cout << "stalker speed: " << _stalker.get_speed() << ", delta speed: " << stalker_delta_speed << std::endl;
 

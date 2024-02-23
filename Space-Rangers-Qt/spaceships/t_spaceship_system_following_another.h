@@ -1,8 +1,10 @@
-#ifndef T_SPACESHIP_FOLLOWING_ANOTHER_SYSTEM_H
-#define T_SPACESHIP_FOLLOWING_ANOTHER_SYSTEM_H
+#ifndef T_SPACESHIP_SYSTEM_FOLLOWING_ANOTHER_H
+#define T_SPACESHIP_SYSTEM_FOLLOWING_ANOTHER_H
 
 #include "../t_common_entities.h"
 #include "../interfaces/i_game_system.h"
+
+#include "t_spaceship_system_get_within_range.h"
 
 // TODO: Корабль stalker должен следовать за кораблем victim сохраняя на дистанции выстрела
 
@@ -14,8 +16,7 @@ class t_spaceship_following_another_system : public i_game_system
 public:
     t_spaceship_following_another_system(t_scene_components& scene_components,
                                          const t_spaceship_id_entity stalker_id,
-                                         const t_spaceship_id_entity victim_id,
-                                         const t_within_range_entity within_range = 60);
+                                         const t_spaceship_id_entity victim_id);
 
     void update(const t_delta delta = t_delta_frame_per_second);
 
@@ -24,7 +25,7 @@ private:
 
     t_spaceship_component& _victim;
 
-    t_within_range_entity _within_range;
+    t_spaceship_system_get_within_range _get_within_range;
 };
 
-#endif // T_SPACESHIP_FOLLOWING_ANOTHER_SYSTEM_H
+#endif // T_SPACESHIP_SYSTEM_FOLLOWING_ANOTHER_H

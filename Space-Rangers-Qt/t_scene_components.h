@@ -2,11 +2,11 @@
 #define T_SCENE_COMPONENTS_H
 
 #include "spaceships/t_component_spaceship.h"
-#include "spaceships/equipments/weapons/t_component_rocket.h"
-#include "planets/t_component_planet.h"
+#include "spaceships/equipments/t_component_rocket.h"
+#include "planets/t_planet_component.h"
 #include "planetsystems/t_component_planetsystem.h"
 
-class [[maybe_unused]] t_scene_components
+class t_scene_components
 {
 public:
     t_scene_components();

@@ -27,10 +27,14 @@ using t_rocket_id_entity                                    = t_id_entity;
 using t_rocket_id_generator                                 = t_value_stepper<t_rocket_id_entity>;
 constexpr t_rocket_id_entity t_none_rocket_id               = t_none_id;
 
-using t_speed_entity                                        = t_scalar_entity;
+using t_weapon_id_entity                                    = t_id_entity;
+using t_weapon_id_generator                                 = t_value_stepper<t_weapon_id_entity>;
+constexpr t_weapon_id_entity t_none_weapon_id               = t_none_id;
+
+using t_scalar_speed_entity                                 = t_scalar_entity;
 using t_radial_speed_entity                                 = t_scalar_entity;
 using t_radius_entity                                       = t_scalar_entity;
-using t_angle_entity                                        = t_scalar_entity;
+using t_scalar_angle_entity                                 = t_scalar_entity;
 using t_within_range_entity                                 = t_scalar_entity;
 
 using t_delta                                               = t_scalar_entity;

@@ -23,9 +23,9 @@ t_2d_position_entity t_spaceship_component::get_position() const { return _posit
 
 t_trajectory_entity& t_spaceship_component::trajectory() { return _trajectory; }
 
-t_speed_entity t_spaceship_component::get_speed() const { return _linear_speed; }
+t_scalar_speed_entity t_spaceship_component::get_speed() const { return _linear_speed; }
 
-void t_spaceship_component::set_linear_speed(const t_speed_entity speed) { _linear_speed = speed; }
+void t_spaceship_component::set_linear_speed(const t_scalar_speed_entity speed) { _linear_speed = speed; }
 
 t_is_player_entity t_spaceship_component::is_player() const { return _is_player; }
 
@@ -33,7 +33,7 @@ t_is_player_entity t_spaceship_component::is_player() const { return _is_player;
 t_spaceship_component make_player() {
     t_spaceship_component player_spaceship { t_player_spaceship_id, true };
 
-    player_spaceship.position() = t_2d_make_position_by_x_axis_system(45, 0);
+    player_spaceship.position() = make_2d_position_by_x_axis(45, 0);
 
     return player_spaceship;
 }
@@ -41,7 +41,7 @@ t_spaceship_component make_player() {
 t_spaceship_component make_spaceship() {
     t_spaceship_component spaceship { 2, {} };
 
-    spaceship.position() = t_2d_make_position_by_x_axis_system(45, 150);
+    spaceship.position() = make_2d_position_by_x_axis(45, 150);
 
     return spaceship;
 }

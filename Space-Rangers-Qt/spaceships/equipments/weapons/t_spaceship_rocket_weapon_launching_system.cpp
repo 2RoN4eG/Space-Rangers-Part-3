@@ -1,4 +1,4 @@
-#include "t_spaceship_rocket_weapon_launcher_system.h"
+#include "t_spaceship_rocket_weapon_launching_system.h"
 
 #include "../../../t_scene_components.h"
 #include "../../../linear_algebra/t_2d_linear_algebra_systems.h"
@@ -21,7 +21,7 @@ bool t_spaceship_rocket_weapon_launcher_system::requirements_completed(const t_s
 
     const t_scalar_length_entity distance_length = make_distance_system(stalker_position, aim_position);
 
-    const t_rocket_weapon_withing_range rocket_weapon_withing_range = rocket_weapon.withing_range();
+    const t_within_range_entity rocket_weapon_withing_range = rocket_weapon.withing_range();
 
     return rocket_weapon_withing_range >= distance_length && rocket_weapon.launch_is_posible();
 }
@@ -37,18 +37,19 @@ void t_spaceship_rocket_weapon_launcher_system::launch_rockets(const t_spaceship
 
     const t_2d_vector_entity&& heading = make_vector_2d_system(stalker_position, aim_position);
 
-    const t_angle_entity heading_angle_in_degrees = t_convert_from_vector_to_degrees_system(heading);
-
-    const t_angle_entity step_in_degrees = 15;
+    const t_scalar_angle_entity heading_angle_in_degrees = convert_from_vector_to_degrees(heading);
 
     const t_spaceship_rocket_weapon_component& rocket_weapon = stalker._rocket_weapon;
 
-    for (t_rocket_weapon_rockets_per_launch_amount index { - rocket_weapon.amount_per_launch() / 2 }; index <= stalker._rocket_weapon.amount_per_launch() / 2; index ++) {
+    // Начальная дистанция
+    const t_scalar_distance_entity launch_distance { 15 };
+
+    for (t_rocket_weapon_rockets_per_launch_amount index { - rocket_weapon.amount_per_launch() / 2 }; index <= rocket_weapon.amount_per_launch() / 2; index ++) {
         const t_rocket_id_entity rocket_id = _rocket_id_generator.get_value_and_generate_next();
 
-        const t_angle_entity rocket_angle_in_degrees = heading_angle_in_degrees + index * step_in_degrees;
+        const t_scalar_angle_entity rocket_angle_in_degrees = heading_angle_in_degrees + index * rocket_weapon.scattering_angle();
 
-        const t_2d_position_entity&& rocket_position = t_2d_make_position_by_x_axis_system(rocket_angle_in_degrees, 100, stalker_position);
+        const t_2d_position_entity&& rocket_position = make_2d_position_by_x_axis(rocket_angle_in_degrees, launch_distance, stalker_position);
 
         rockets_array.emplace_back(t_component_rocket { rocket_id, aim_id, rocket_position });
     }

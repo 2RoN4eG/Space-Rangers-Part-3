@@ -10,12 +10,12 @@
 
 #include "t_common_entities.h"
 
-#include "spaceships/t_spaceship_trajectory_moving_system.h"
-#include "spaceships/t_spaceship_following_another_system.h"
-#include "spaceships/equipments/weapons/t_spaceship_rocket_weapon_launcher_system.h"
-#include "spaceships/equipments/weapons/t_rocket_moving_system.h"
+#include "spaceships/t_spaceship_system_trajectory_moving.h"
+#include "spaceships/t_spaceship_system_following_another.h"
+#include "spaceships/equipments/weapons/t_spaceship_rocket_weapon_launching_system.h"
+#include "spaceships/equipments/t_rocket_moving_system.h"
 
-#include "planets/t_system_planet_circle_moving.h"
+#include "planets/t_planet_system_circle_moving.h"
 
 #include "spaceships/t_component_spaceship.h"
 
@@ -25,18 +25,23 @@
 
 #include <iostream>
 
-t_scene_components scene_components {};
+#define qCurrentTime \
+    QTime::currentTime().toString("hh:mm:ss")
 
-t_spaceship_following_another_system spaceship_following_another { scene_components,
-                                                                   t_spaceship_id_entity { 0 },
-                                                                   t_spaceship_id_entity { 2 } };
+t_scene_components g_scene_components {};
 
-t_spaceship_rocket_weapon_launcher_system paceship_rocket_weapon_launcher { scene_components,
+constexpr t_spaceship_id_entity t_enemy_spaceship_id { 2 };
+
+t_spaceship_following_another_system spaceship_following_another { g_scene_components,
+                                                                   t_player_spaceship_id,
+                                                                   t_enemy_spaceship_id };
+
+t_spaceship_rocket_weapon_launcher_system paceship_rocket_weapon_launcher { g_scene_components,
                                                                             t_player_spaceship_id };
 
-t_rocket_moving_system rocket_moving { scene_components };
+t_rocket_system_moving rocket_moving { g_scene_components };
 
-t_system_planet_circle_moving planet_circle_moving { scene_components };
+t_planet_system_circle_moving planet_circle_moving { g_scene_components };
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -66,7 +71,7 @@ void MainWindow::paintEvent(QPaintEvent* event) {
 
     QPainter painter { this };
 
-    t_game_render_system render { size, painter, scene_components };
+    t_game_render_system render { size, painter, g_scene_components };
 
     render.update();
 
@@ -90,27 +95,22 @@ void MainWindow::resizeEvent(QResizeEvent* event) {
 }
 
 void MainWindow::mousePressEvent(QMouseEvent* event) {
-    if (!_setting_enemy_path) {
-        return;
-    }
+    if (!_setting_enemy_path) { return; }
 
     const QPoint point = event->pos();
 
-    t_spaceship_component& spaceship = scene_components.spaceship(t_spaceship_id_entity { 2 });
+    t_spaceship_component& spaceship = g_scene_components.spaceship(t_enemy_spaceship_id);
     spaceship.trajectory().emplace_back(point.x(), ui->widget->size().height() - point.y());
 
     repaint();
 }
 
 void MainWindow::timerEvent(QTimerEvent* event) {
-#define qCurrentTime \
-    QTime::currentTime().toString("hh:mm:ss")
+    qDebug() << qCurrentTime << "qt timerEvent(QTimerEvent* event)";
 
-        qDebug() << qCurrentTime << "qt timerEvent(QTimerEvent* event)";
+    t_spaceship_component& spaceship = g_scene_components.spaceship(t_enemy_spaceship_id);
 
-    t_spaceship_component& spaceship = scene_components.spaceship(t_spaceship_id_entity { 2 });
-
-    t_spaceship_trajectory_moving_system spaceship_moving { spaceship };
+    t_spaceship_system_trajectory_moving spaceship_moving { spaceship };
     spaceship_moving.update();
 
     planet_circle_moving.update();
@@ -125,37 +125,37 @@ void MainWindow::timerEvent(QTimerEvent* event) {
 }
 
 void MainWindow::on_pushButton_3_clicked() {
-    t_spaceship_component& spaceship = scene_components.spaceship(t_spaceship_id_entity { 0 });
+    t_spaceship_component& spaceship = g_scene_components.spaceship(t_player_spaceship_id);
 
     spaceship.position() = {
         float (ui->space_ship_spin_box_x->value()),
         float (ui->space_ship_spin_box_y->value())
     };
 
-    std::cout << "spaceship { id: " << spaceship.id() << " } contains position { "
-              << float (ui->space_ship_spin_box_x->value()) << ", " << float (ui->space_ship_spin_box_y->value())
-              << " }" << std::endl;
+    // std::cout << "spaceship { id: " << spaceship.id() << " } contains position { "
+    //           << float (ui->space_ship_spin_box_x->value()) << ", " << float (ui->space_ship_spin_box_y->value())
+    //           << " }" << std::endl;
 
     repaint();
 }
 
 void MainWindow::on_pushButton_4_clicked() {
-    t_spaceship_component& spaceship = scene_components.spaceship(t_spaceship_id_entity { 2 });
+    t_spaceship_component& spaceship = g_scene_components.spaceship(t_enemy_spaceship_id);
 
     spaceship.position() = {
         float (ui->space_ship_spin_box_x_enemy->value()),
         float (ui->space_ship_spin_box_y_enemy->value())
     };
 
-    std::cout << "spaceship { id: " << spaceship.id() << " } contains position { "
-              << float (ui->space_ship_spin_box_x_enemy->value()) << ", " << float (ui->space_ship_spin_box_y_enemy->value())
-              << " }" << std::endl;
+    // std::cout << "spaceship { id: " << spaceship.id() << " } contains position { "
+    //           << float (ui->space_ship_spin_box_x_enemy->value()) << ", " << float (ui->space_ship_spin_box_y_enemy->value())
+    //           << " }" << std::endl;
 
     repaint();
 }
 
 void MainWindow::on_pushButton_5_clicked() {
-    t_spaceship_component& spaceship = scene_components.spaceship(t_spaceship_id_entity { 2 });
+    t_spaceship_component& spaceship = g_scene_components.spaceship(t_enemy_spaceship_id);
 
     spaceship.trajectory() = {};
     _setting_enemy_path = true;
@@ -171,17 +171,18 @@ void MainWindow::on_pushButton_6_clicked() {
 
 void MainWindow::on_pushButton_7_clicked() {
     if (_timer_id > -1) {
+        std::cout << "setting pause state" << std::endl;
         killTimer(_timer_id);
         _timer_id = -1;
         return;
     }
 
+    std::cout << "setting play state" << std::endl;
     _timer_id = startTimer(500);
 }
 
 
-void MainWindow::on_pushButton_clicked()
-{
+void MainWindow::on_pushButton_clicked() {
     _following = !_following;
 }
 
